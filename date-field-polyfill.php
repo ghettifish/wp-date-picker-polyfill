@@ -9,14 +9,14 @@
  * that starts the plugin.
  *
  * @link              nicbovee.com
- * @since             1.0.0
+ * @since             1.0.1
  * @package           Date_Field_Polyfill
  *
  * @wordpress-plugin
  * Plugin Name:       Date Field Polyfill
  * Plugin URI:        nicbovee.com/date-field-polyfill
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
- * Version:           1.0.0
+ * Description:       Adds date-picker-polyfill to unsupported browsers.
+ * Version:           1.0.1
  * Author:            Nic Bovee
  * Author URI:        nicbovee.com
  * License:           GPL-2.0+
@@ -35,8 +35,11 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'DATE_FIELD_POLYFILL_VERSION', '1.0.0' );
+define( 'DATE_FIELD_POLYFILL_VERSION', '1.0.1' );
 
 
 
-wp_enqueue_script( "date-field-polyfill", plugin_dir_url( __FILE__ ) . 'js/date-field-polyfill-public.js', array( 'jquery' ), DATE_FIELD_POLYFILL_VERSION, false );
+
+add_action('wp_enqueue_scripts', function() {
+	wp_enqueue_script( "date-field-polyfill", plugin_dir_url( __FILE__ ) . 'public/js/date-field-polyfill-public.js', array( 'jquery' ), DATE_FIELD_POLYFILL_VERSION, false );
+});
